@@ -1,0 +1,259 @@
+/**
+    @fileOverview
+    幻灯片的基本主题布局
+    @author Jinjiang<zhaojinjiang@yahoo.com.cn>
+ */
+
+
+/***** General *****/
+
+[data-item] {
+    position: absolute;
+    margin: 0;
+    padding: 0;
+    line-height: 1.5;
+}
+
+
+
+
+/***** Hidden Position *****/
+
+[data-item="title"] {
+    text-align: center;
+    height: 24px;
+    font-weight: bold;
+}
+
+[data-item="subtitle"] {
+    top: 60px;
+    width: 120px;
+    left: -113px;
+    height: 15px;
+    font-weight: bold;
+}
+[data-item="subtitle2"] {
+    top: 60px;
+    width: 120px;
+    left: 327px;
+    height: 15px;
+    font-weight: bold;
+}
+
+[data-item="content2"] {
+    top: 80px;
+    width: 120px;
+    left: 327px;
+}
+
+[data-item] p {
+    margin: 0;
+}
+
+
+
+
+/***** Font Size *****/
+
+[data-item] {
+    font-size: 8px;
+}
+[data-item].large-font-size {
+    font-size: 10px;
+}
+[data-item].small-font-size {
+    font-size: 20px;
+}
+
+[data-item="title"] {
+    font-size: 16px;
+}
+[data-item="title"].large-font-size {
+    font-size: 54px;
+}
+[data-item="title"].small-font-size {
+    font-size: 12px;
+}
+
+[data-item="subtitle"],
+[data-item="subtitle2"] {
+    font-size: 10px;
+}
+[data-item="subtitle"].large-font-size,
+[data-item="subtitle2"].large-font-size {
+    font-size: 12px;
+}
+[data-item="subtitle"].small-font-size,
+[data-item="subtitle2"].small-font-size {
+    font-size: 8px;
+}
+
+
+
+
+/***** Big Title template *****/
+
+[data-layout="title"] [data-item="title"],
+[data-layout="title"] [data-item="content"] {
+    display: block;
+    opacity: 1;
+}
+
+[data-layout="title"] [data-item="title"] {
+    width: 250px;
+    top: 80px;
+    left: 42px;
+    height: 36px;
+}
+[data-layout="title"] [data-item="content"] {
+    text-align: center;
+    width: 160px;
+    top: 125px;
+    left: 87px;
+}
+
+[data-layout="title"] [data-item="title"].large-font-size {
+    font-size: 32px;
+}
+[data-layout="title"] [data-item="title"] {
+    font-size: 24px;
+}
+[data-layout="title"] [data-item="title"].small-font-size {
+    font-size: 16px;
+}
+
+[data-layout="title"] [data-item="content"].large-font-size {
+    font-size: 14px;
+}
+[data-layout="title"] [data-item="content"] {
+    font-size: 12px;
+}
+[data-layout="title"] [data-item="content"].small-font-size {
+    font-size: 10px;
+}
+
+
+
+
+/***** Sub-Title template *****/
+
+[data-layout="subtitle"] [data-item="title"],
+[data-layout="subtitle"] [data-item="content"] {
+    display: block;
+    opacity: 1;
+}
+
+[data-layout="subtitle"] [data-item="title"] {
+    text-align: left;
+    width: 210px;
+    top: 100px;
+    left: 42px;
+}
+[data-layout="subtitle"] [data-item="content"] {
+    font-size: 10px;
+    width: 160px;
+    top: 130px;
+    left: 57px;
+}
+
+[data-layout="subtitle"] [data-item="content"].large-font-size {
+    font-size: 12px;
+}
+[data-layout="subtitle"] [data-item="content"].small-font-size {
+    font-size: 8px;
+}
+
+
+
+
+/***** Normal template *****/
+
+[data-layout="normal"] [data-item="title"],
+[data-layout="normal"] [data-item="content"] {
+    display: block;
+    opacity: 1;
+}
+
+[data-layout="normal"] [data-item="title"] {
+    width: 250px;
+    top: 25px;
+    left: 42px;
+}
+[data-layout="normal"] [data-item="content"] {
+    width: 250px;
+    top: 60px;
+    left: 42px;
+    height: 140px;
+}
+
+
+
+
+/***** Two-columns template *****/
+
+[data-layout="double"] [data-item="title"],
+[data-layout="double"] [data-item="content"],
+[data-layout="double"] [data-item="content2"] {
+    display: block;
+    opacity: 1;
+}
+
+[data-layout="double"] [data-item="title"] {
+    width: 250px;
+    top: 25px;
+    left: 42px;
+}
+[data-layout="double"] [data-item="content"] {
+    width: 120px;
+    top: 60px;
+    left: 42px;
+    height: 140px;
+}
+[data-layout="double"] [data-item="content2"] {
+    width: 120px;
+    top: 60px;
+    left: 172px;
+    height: 140px;
+}
+
+
+
+
+/***** Two-columns with Sub-Title template *****/
+
+[data-layout="double-subtitle"] [data-item="title"],
+[data-layout="double-subtitle"] [data-item="subtitle"],
+[data-layout="double-subtitle"] [data-item="subtitle2"],
+[data-layout="double-subtitle"] [data-item="content"],
+[data-layout="double-subtitle"] [data-item="content2"] {
+    display: block;
+    opacity: 1;
+}
+
+[data-layout="double-subtitle"] [data-item="title"] {
+    width: 250px;
+    top: 25px;
+    left: 42px;
+}
+[data-layout="double-subtitle"] [data-item="subtitle"] {
+    width: 120px;
+    top: 60px;
+    left: 42px;
+}
+[data-layout="double-subtitle"] [data-item="subtitle2"] {
+    width: 120px;
+    top: 60px;
+    left: 172px;
+}
+[data-layout="double-subtitle"] [data-item="content"] {
+    width: 120px;
+    top: 80px;
+    left: 42px;
+    height: 110px;
+}
+[data-layout="double-subtitle"] [data-item="content2"] {
+    width: 120px;
+    top: 80px;
+    left: 172px;
+    height: 110px;
+}

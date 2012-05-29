@@ -1,0 +1,199 @@
+.app{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 480px;
+    height: 300px;
+    background: lightgray;
+}
+
+.slideApp{
+    background-image: url(../images/jiemianbeijing.jpg);
+    width: 100%;
+    height: 100%;
+}
+
+.slides{
+    margin: 0;
+    width: 380px;
+    height: 90%;
+    position: absolute;
+    top: 15px;
+    left: 20px;
+    overflow: hidden;
+}
+
+.slide{
+    display: none;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    -webkit-transition: all 0.3s ease-out;
+    -moz-transition: all 0.3s ease-out;
+    -ms-transition: all 0.3s ease-out;
+    -o-transition: all 0.3s ease-out;
+    transition: all 0.3s ease-out;
+}
+
+.slide.current{
+    display: block;
+    background: white;
+    z-index: 2;
+}
+
+.slide.next {
+    display: block;
+    opacity: 0;
+    -webkit-transform: translateY(320px);
+    -moz-transform: translateY(320px);
+    -ms-transform: translateY(320px);
+    transform: translateY(320px);
+}
+.slide.prev {
+    display: block;
+    opacity: 0;
+    -webkit-transform: translateY(-320px);
+    -moz-transform: translateY(-320px);
+    -ms-transform: translateY(-320px);
+    transform: translateY(-320px);
+}
+
+.rightBar{
+    position: absolute;
+    height: 100%;
+    right: 0;
+    top: 0;
+    width: 45px;
+    background: url(../images/bian_kuang.png);
+    z-index: 100;
+}
+
+.icon{
+    width: 36px;
+    height: 36px;
+    
+    padding: 10px 0;
+    
+    border-bottom: 1px solid rgba(255,255,255,0.3);
+}
+
+
+
+.mask{
+    position: absolute;
+    background: rgba(0,0,0,.5);
+    width: 100%;
+    height: 100%;
+    z-index: 100;
+    
+    display: none;
+}
+
+.showNote{
+    display: none;
+    position: absolute;
+    top: 15px;
+    left: 20px;
+    width: 340px;
+    height: 230px;
+    padding: 20px;
+    border-radius: 10px;
+    background: rgba(255,255,255,0.8);
+    z-index: 105;
+}
+
+.pageList{
+    display: none;
+    position: absolute;
+    top: 5px;
+    left: 0;
+    bottom: 10px;
+    padding: 10px 0;
+    width: 410px;
+    height: 270px;
+    z-index: 106;
+}
+
+.pageList .pageChoose{
+    display: inline-block;
+    width: 33%;
+    height: 100px;
+}
+
+.pageList .pageTitle{
+    width: 80px;
+    height: 50px;
+    margin: 0 auto;
+    font-size: 12px;
+    line-height: 20px;
+    text-align: center;
+    overflow: hidden;
+    padding: 10px 10px;
+    background: #eee;
+    box-shadow: 1px 1px 6px white;
+}
+.pageList .pageNum{
+   text-align: center;
+   font-size: 12px;
+   color: white;
+}
+
+.pageShow{
+    font-size: 12px;
+    font-weight: bold;
+    color: white;
+    text-align: center;
+    margin: 0 10px;
+    position: absolute;
+    bottom: 15px;
+}
+
+.exitBtn{
+    position: absolute;
+    top: 4px;
+    left: 8px;
+    color: white;
+    background: gray;
+    width: 18px;
+    height: 18px;
+    font-size: 15px;
+    line-height: 18px;
+    border-radius: 10px;
+    border: 2px solid lightgray;
+    text-align: center;
+    z-index: 100;
+        
+}
+.exitBtn a{
+    color: white;
+    text-decoration: none;
+}
+.theMarker {opacity: 0.9;-moz-opacity: 0.5;filter:alpha(opacity=50);background:#000 url(/images/ajax-loader.gif) center no-repeat!important;width:100%;position:absolute;top:0;left:0;z-index:999;}
+
+#loginPanel {
+    width: 480px;
+    height: 300px;
+    background: url(../images/denglubeijing.jpg);
+    position: relative;
+}
+
+.setCode{
+    background: 
+    rgba(100, 200, 200, 0.5);
+    width: 220px;
+    position: absolute;
+    left: 130px;
+    top: 150px;
+    padding: 5px 10px;
+    border-radius: 5px;
+}
+
+.pptlogo{
+    position: absolute;
+    left: 100px;
+    top: 70px;
+}

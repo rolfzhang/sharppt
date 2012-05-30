@@ -90,7 +90,9 @@ io.sockets.on('connection', function (socket){
 	if(method == "pptServer"){
 		if(usersServer[name]){
 			usersServer[name].socket = socket;
-            socket.emit('hadGetCode',usersServer[name].code);
+            if(usersServer[name].code){
+                socket.emit('hadGetCode',usersServer[name].code);
+            }
 		}else{
 			usersServer[name] = {};
 			usersServer[name].socket = socket;
@@ -101,6 +103,7 @@ io.sockets.on('connection', function (socket){
 		var goodCode = 0;
 		while(!goodCode){
 			goodCode = Math.ceil(Math.random()*10000)+1;
+            console.log(goodCode);
 			for(var i in codes){
 				if(codes[i] == goodCode){
 					goodCode = false;
@@ -113,11 +116,10 @@ io.sockets.on('connection', function (socket){
 	});
 	socket.on('setCode',function(code,fn){
 		for(var i in usersServer){
+            console.log(usersServer[i].code);
 			if(usersServer[i].code == code){
-				if(!usersClient[name].control){
-					usersClient[name].control = usersServer[i];
-					usersServer[i].beControl = usersClient[name];
-				}
+				usersClient[name].control = usersServer[i];
+				usersServer[i].beControl = usersClient[name];
 				fn(code);
 				var message = "toPlay";
 				name && usersClient[name].control.socket.emit('doPlay',message);

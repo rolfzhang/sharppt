@@ -44,6 +44,7 @@
 		socket.on('sendCode',function(code){
 			$(".codeMessage").html("");
 			$('.getCode').hide();
+            $('.getCodeBtn').hide();
 			$('.pptServerContent').html("识别码是"+code+",输入识别码后立即播放");
 		});
 		socket.on('hadGetCode',function(code){

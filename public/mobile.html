@@ -3,26 +3,22 @@
 <html>
     <head>
         <title>PPT掌中利器</title>
-
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <meta name="viewport" content="width=480, initial-scale=1, minimum-scale=1,maximum-scale=1" />
         <meta name="apple-mobile-web-app-capable" content="yes"/>
         <meta name="apple-mobile-web-app-status-bar-style" content="black"/>
-
         <link href="css/style.css" type="text/css"  rel="stylesheet"/>
         <link href="css/phone-theme.css" type="text/css"  rel="stylesheet"/>
-
     </head>
     <body>
         <div class="app">
             <div id="loginPanel">
-
                 <div class="pptlogo">
                     <img src="../images/pptlogo.png"/>
                 </div>
                 <!--设置标识码-->
-                <div class="setCode">
-                    <input type="text" name="setCode"/>
+                <div class="setCode" style="display:none;">
+                    <input type="text" name="setCode" />
                     <button class="setCodeBtn">匹配</button>
                 </div>
             </div>
@@ -59,35 +55,28 @@
                             </a>
                         </div>
                     </div>
-
                     <div class="pageShow">
                         <span id="currentPage"></span><br/>
                         /<br/>
                         <span id="totalPage"></span>
                     </div>
-
                 </div>
                 <div id="slides" class="slides"></div>
-
                 <div id="mask" class="mask"></div>
-
                 <div id="showNote" class="showNote">
                     <div>备注</div>
                     <div id="noteContent"></div>
                 </div>
-
                 <div id="pageList" class="pageList">
                     <div id="pageListContainer">
                     </div>
                 </div>
-
                 <div id="exitBtn" class="exitBtn">
                     <a href="javascript:">X</a>
                 </div>
             </div>
         </div>
         <canvas id="canvasClient" style="display:none;z-index:9999;position: absolute;top: 15px;left: 20px;"></canvas>
-
         <script type="text/javascript">
             window.addEventListener("touchmove", function(e) {
                 e.preventDefault();
@@ -97,7 +86,6 @@
             }, false);
             window.scrollTo(0,-5);
         </script>
-
         <script src="js/jquery-1.7.1.js"></script>
         <script src="js/iscroll.js"  type="text/javascript"></script>
         <script src="js/text-parser.js"  type="text/javascript"></script>

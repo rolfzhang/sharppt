@@ -5,16 +5,13 @@ var express = require('express'),
 	url = require('url'),
 	parseCookie = require('connect').utils.parseCookie,
 	MemoryStore = require('connect/middleware/session/memory');
-
 var usersClient = {},
 	codes = [];
 	usersServer = {}
 	storeMemory = new MemoryStore({
 		reapInterval: 60000 * 10
 	});
-
 var app = module.export = express.createServer();
-
 app.configure(function(){
 	app.use(express.bodyParser());
 	app.use(express.cookieParser());
@@ -28,7 +25,6 @@ app.configure(function(){
 	app.set('view engine', 'jade');
 	app.use(express.static(__dirname + '/public'));
 });
-
 var io = sio.listen(app);
 io.set('authorization', function(handshakeData, callback){
 	handshakeData.cookie = parseCookie(handshakeData.headers.cookie)
@@ -50,7 +46,9 @@ io.set('authorization', function(handshakeData, callback){
 		callback('nosession');
 	}
 });
-
+app.get('/',function(req,res){
+    	res.redirect('/server');
+});
 app.get('/client',function(req,res){
 	var name = "evan"+Math.ceil(Math.random()*10000);
 	var method = "pptClient";
@@ -62,7 +60,6 @@ app.get('/client',function(req,res){
 		res.end(txt);
 	}
 });
-
 app.get('/server',function(req,res){
 	var name = "evan"+Math.ceil(Math.random()*10000);
 	var method = "pptServer";
@@ -82,7 +79,6 @@ app.get('/server',function(req,res){
 		}
 	}
 });
-
 io.sockets.on('connection', function (socket){
 	var session = socket.handshake.session;
 	var name = session.name;
@@ -93,18 +89,18 @@ io.sockets.on('connection', function (socket){
 	}
 	if(method == "pptServer"){
 		if(usersServer[name]){
-			socket.emit('hadGetCode',usersServer[name].code);
 			usersServer[name].socket = socket;
+            socket.emit('hadGetCode',usersServer[name].code);
 		}else{
 			usersServer[name] = {};
 			usersServer[name].socket = socket;
+            socket.emit('noGetCode');
 		}
 	}
-
 	socket.on('getCode',function(){
 		var goodCode = 0;
 		while(!goodCode){
-			goodCode = Math.ceil(Math.random()*10000);
+			goodCode = Math.ceil(Math.random()*10000)+1;
 			for(var i in codes){
 				if(codes[i] == goodCode){
 					goodCode = false;
@@ -115,7 +111,6 @@ io.sockets.on('connection', function (socket){
 		usersServer[name].code = goodCode;
 		socket.emit('sendCode',goodCode);
 	});
-
 	socket.on('setCode',function(code,fn){
 		for(var i in usersServer){
 			if(usersServer[i].code == code){
@@ -129,41 +124,32 @@ io.sockets.on('connection', function (socket){
 			}
 		}
 	});
-
-
 	socket.on('toQuit',function(){
 		var message = "doQuit";
 		name && usersClient[name].control.socket.emit('doQuit',message);
 	});
-
 	socket.on('toPlay',function(){
 		var message = "toPlay";
 		name && usersClient[name].control.socket.emit('doPlay',message);
 	});
-
 	socket.on('toNavPage',function(page){
 		var message = "toNavPage";
 		name && usersClient[name].control.socket.emit('doNavPage',message,page);
 	});
-
 	socket.on('toNextPage',function(){
 		var message = "toNextPage";
 		name && usersClient[name].control.socket.emit('doNextPage',message);
 	});
-
 	socket.on('toPrevPage',function(){
 		var message = "toPrevPage";
 		name && usersClient[name].control.socket.emit('doPrevPage',message);
 	});
-
 	socket.on('setContent',function(data){
 		data && usersServer[name].beControl.socket.emit('getContent',data);
 	});
-
 	socket.on('toDrawLine',function(x,y){
 		name && usersClient[name].control.socket.emit('doDrawLine',x,y);
 	});
-
 	socket.on('zeroDraw',function(){
 		name && usersClient[name].control.socket.emit('zeroDraw');
 	});
@@ -173,7 +159,6 @@ io.sockets.on('connection', function (socket){
 	});
 	
 });
-
 app.listen(80, function(){
 	var addr = app.address();
 	console.log('app listening on ' + addr.port);

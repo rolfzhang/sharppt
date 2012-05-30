@@ -1,5 +1,4 @@
 !function(win, doc, $, io){
-
 	var socket = io.connect();
 	var canvasServer = document.getElementById("canvasServer");
 	var contextServer = canvasServer.getContext("2d");
@@ -48,8 +47,13 @@
 			$('.pptServerContent').html("识别码是"+code+",输入识别码后立即播放");
 		});
 		socket.on('hadGetCode',function(code){
-			$('.getCode').hide();
+			$('.getCodeBtn').hide();
+            $(".codeMessage").html("");
 			$('.pptServerContent').html("识别码是"+code+",输入识别码后立即播放");
+		});
+        socket.on('noGetCode',function(){
+    		$('.getCodeBtn').show();
+            $(".codeMessage").html("");
 		});
 		socket.on('doDrawLine',function(x,y){
 			x = ~~(x*yRate); 
